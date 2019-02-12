@@ -15,6 +15,7 @@ try {
       this.waiters = []; // array of objects
       this.orders = []; // array of objects
 
+      delete data.id;
       this.addPipelineResources(data);
 
     }
@@ -23,31 +24,29 @@ try {
 
       for (var key in data) {
 
+        let numberOfObjects = data[key];
+
         switch (key) {
 
           case 'doughChefs':
-            numberOfObjects = data[key];
             for (var i = 0; i < numberOfObjects; i++) {
               this.doughChefs.push(new doughChef());
             }
             break;
 
           case 'toppingChefs':
-            numberOfObjects = data[key];
             for (var i = 0; i < numberOfObjects; i++) {
               this.toppingChefs.push(new toppingChef());
             }
             break;
 
           case 'ovens':
-            numberOfObjects = data[key];
             for (var i = 0; i < numberOfObjects; i++) {
               this.ovens.push(new oven());
             }
             break;
 
           case 'waiters':
-            numberOfObjects = data[key];
             for (var i = 0; i < numberOfObjects; i++) {
               this.waiters.push(new waiter());
             }
@@ -57,19 +56,16 @@ try {
 
       }
 
-    });
+    }
 
-}
+    addNewOrders(ordersData) {
 
-addNewOrders(ordersData) {
+    }
 
-}
-
-};
+  };
 
 
-}
-catch (err) {
+} catch (err) {
   console.log('error in restaurant.js');
   console.log(err);
 }
