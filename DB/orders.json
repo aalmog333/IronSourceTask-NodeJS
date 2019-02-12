@@ -1,0 +1,17 @@
+[
+  {
+    "id":1,
+    "restaurantId":1,
+    "toppings": 1
+  },
+  {
+    "id":2,
+    "restaurantId":1,
+    "toppings": 3
+  },
+  {
+    "id":3,
+    "restaurantId":1,
+    "toppings": 2
+  }
+]
