@@ -21,51 +21,55 @@ try {
 
     addPipelineResources(data) {
 
-      data.forEach(function(value, index) {
+      for (var key in data) {
 
-        switch (index) {
+        switch (key) {
 
           case 'doughChefs':
-          for (var key in value) {
-            value[key]
-          }
-            value.forEach(function(doughChefId) {
-              this.doughChefs.push(new doughChef(doughChefId, false));
-            })
+            numberOfObjects = data[key];
+            for (var i = 0; i < numberOfObjects; i++) {
+              this.doughChefs.push(new doughChef());
+            }
             break;
 
           case 'toppingChefs':
-            value.forEach(function(toppingChefId) {
-              this.toppingChefs.push(new toppingChef(toppingChefId, false, 0));
-            })
+            numberOfObjects = data[key];
+            for (var i = 0; i < numberOfObjects; i++) {
+              this.toppingChefs.push(new toppingChef());
+            }
             break;
 
           case 'ovens':
-            value.forEach(function(ovenId) {
-              this.ovens.push(new oven(ovenId, false));
-            })
+            numberOfObjects = data[key];
+            for (var i = 0; i < numberOfObjects; i++) {
+              this.ovens.push(new oven());
+            }
             break;
 
           case 'waiters':
-            value.forEach(function(waiterId) {
-              this.waiters.push(new waiter(waiterId, false));
-            })
+            numberOfObjects = data[key];
+            for (var i = 0; i < numberOfObjects; i++) {
+              this.waiters.push(new waiter());
+            }
             break;
 
         }
 
-      });
+      }
 
-    }
+    });
 
-    addNewOrders(ordersData) {
+}
 
-    }
+addNewOrders(ordersData) {
 
-  };
+}
+
+};
 
 
-} catch (err) {
+}
+catch (err) {
   console.log('error in restaurant.js');
   console.log(err);
 }

@@ -4,9 +4,9 @@ try {
 
   module.exports = class ToppingChef extends Pipline {
 
-    constructor(id, busy, activeTopping) {
-      super(id, busy);
-      this.activeTopping = activeTopping; // activeTopping <= maxActiveTopping;
+    constructor() {
+      super();
+      this.activeTopping = 0; // activeTopping <= maxActiveTopping;
       this.createToppingTime = 4; // 4 sec // can only be static property with ES6
       this.maxActiveTopping = 2; // s sec
 

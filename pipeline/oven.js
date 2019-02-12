@@ -2,8 +2,8 @@ var Pipline = require('./pipline');
 
 module.exports = class Oven extends Pipline {
 
-  constructor(id,busy) {
-    super(id,busy);
+  constructor() {
+    super();
     this.bakeTime = 10; // 10 sec
   }
 

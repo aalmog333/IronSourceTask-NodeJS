@@ -3,8 +3,8 @@ var Pipline = require('./pipline');
 try {
   module.exports = class DoughChef extends Pipline {
 
-    constructor(id, busy) {
-      super(id, busy);
+    constructor() {
+      super();
       this.createDoughTime = 7; // 7 sec // can only be static property with ES6
     }
 
