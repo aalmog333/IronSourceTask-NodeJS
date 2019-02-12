@@ -1,14 +1,14 @@
-var Pipline = require('./pipline');
+var Pipeline = require('./pipeline');
 
-module.exports = class Waiter extends Pipline {
+module.exports = class Waiter extends Pipeline {
 
   constructor() {
     super();
     this.serveTime = 5; // 5 sec
   }
 
-  serve() {
-    return this.serveTime;
+  async serve() {
+    return await timeout(this.serveTime);
   }
 
 };

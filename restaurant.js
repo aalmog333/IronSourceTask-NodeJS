@@ -20,6 +20,7 @@ try {
 
     }
 
+    // @param {object} data
     addPipelineResources(data) {
 
       for (var key in data) {
@@ -58,14 +59,25 @@ try {
 
     }
 
-    addNewOrders(ordersData) {
+    // @param {array} ordersData
+    async addNewOrders(ordersData) {
 
+      for (var i = 0; i < ordersData.length) {
+        // we can leave it sync 
+        this.orders.push(new order());
+
+      }
+
+    };
+
+    printFinalReport() {
+      //in one log file report
+      // The total preparation time for the whole process of this group of order from start to end (when the last order finished her preparation)
+      //The preparation time for each order (from start to end)
     }
 
-  };
 
-
-} catch (err) {
-  console.log('error in restaurant.js');
-  console.log(err);
-}
+  } catch (err) {
+    console.log('error in restaurant.js');
+    console.log(err);
+  }

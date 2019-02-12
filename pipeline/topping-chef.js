@@ -1,8 +1,8 @@
-var Pipline = require('./pipline');
+var Pipeline = require('./pipeline');
 
 try {
 
-  module.exports = class ToppingChef extends Pipline {
+  module.exports = class ToppingChef extends Pipeline {
 
     constructor() {
       super();
@@ -12,8 +12,9 @@ try {
 
     }
 
-    createTopping() {
-      return this.createToppingTime;
+    async createTopping() {
+      // activeTopping handle
+      return await timeout(this.createToppingTime);
     }
 
   };

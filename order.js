@@ -1,7 +1,11 @@
+const fs = require('fs-extra')
+
 module.exports = class Order {
 
   constructor(id) {
+    this.id = id;
     this.stage = 0;
+    
   }
 
   log(stage) {

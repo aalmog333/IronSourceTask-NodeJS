@@ -1,7 +1,7 @@
-var Pipline = require('./pipline');
+var Pipeline = require('./pipeline');
 
 try {
-  module.exports = class DoughChef extends Pipline {
+  module.exports = class DoughChef extends Pipeline {
 
     constructor() {
       super();
@@ -9,8 +9,8 @@ try {
     }
 
     async createDough() {
-      // add async await with set timeout and maybe put it inside pipline; and only in
-      return await setTimeOut(this.createDoughTime * 1000);
+      // add async await with set timeout and maybe put it inside Pipeline;
+      return await timeout(this.createDoughTime);
     }
 
   };

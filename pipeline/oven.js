@@ -1,14 +1,14 @@
-var Pipline = require('./pipline');
+var Pipeline = require('./pipeline');
 
-module.exports = class Oven extends Pipline {
+module.exports = class Oven extends Pipeline {
 
   constructor() {
     super();
     this.bakeTime = 10; // 10 sec
   }
 
-  bake() {
-    return this.bakeTime;
+  async bake() {
+    return await timeout(this.bakeTime);
   }
 
 };
