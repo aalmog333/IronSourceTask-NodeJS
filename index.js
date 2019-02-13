@@ -31,8 +31,17 @@ try {
 
   // send new orders to myRestaurant
   // start pipeline asynchronous processes
-  myRestaurant.addNewOrders(myRestaurantOrdersData);
-  myRestaurant.printFinalReport(); // only when all the order finished their preparation pipeline process
+  new Promise( (resolve, reject) => {
+    resolve(myRestaurant.addNewOrders(myRestaurantOrdersData));
+  }).then( () => {
+    console.log('in here1');
+    myRestaurant.printFinalReport(); // only when all the order finished their preparation pipeline process
+  }).catch( (err) => {
+    console.log('error in index.js -> addNewOrders | printFinalReport');
+    console.log(err);
+  });
+
+  // myRestaurant.printFinalReport(); // only when all the order finished their preparation pipeline process
 
 } catch (err) {
   console.log('error in index.js');

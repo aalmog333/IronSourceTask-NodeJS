@@ -1,0 +1,5 @@
+Restaurant ID - (1) | start time: 15:03:45 | end time: 15:04:41 | total time: 56 seconds
+Order ID - (1) | start time: 15:03:45 | end time: 15:04:11 | total time: 26.044 seconds
+Order ID - (2) | start time: 15:03:45 | end time: 15:04:21 | total time: 36.111 seconds
+Order ID - (3) | start time: 15:03:45 | end time: 15:04:31 | total time: 46.205 seconds
+Order ID - (4) | start time: 15:03:45 | end time: 15:04:41 | total time: 56.293 seconds

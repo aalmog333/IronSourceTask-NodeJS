@@ -1,8 +1,8 @@
-Order ID - (1) - is created | time = 12:52:57
-Order ID - (2) - is created | time = 12:52:57
-Order ID - (3) - is created | time = 12:52:57
-Order ID - (4) - is created | time = 12:52:57
-Order ID - (1) - Restaurant ID = 1
-Order ID - (2) - Restaurant ID = 1
-Order ID - (3) - Restaurant ID = 1
-Order ID - (4) - Restaurant ID = 1
+Order ID - (1) - is created | time = 15:03:45
+Order ID - (2) - is created | time = 15:03:45
+Order ID - (3) - is created | time = 15:03:45
+Order ID - (4) - is created | time = 15:03:45
+Order ID - (1) - is completed | time = 15:04:11
+Order ID - (2) - is completed | time = 15:04:21
+Order ID - (3) - is completed | time = 15:04:31
+Order ID - (4) - is completed | time = 15:04:41

@@ -4,6 +4,8 @@ var Oven = require("./pipeline/oven.js");
 var Waiter = require("./pipeline/waiter.js");
 var Order = require("./order.js");
 
+const fs = require('fs');
+
 try {
 
   module.exports = class Restaurant {
@@ -16,8 +18,8 @@ try {
       this.waiters = []; // array of objects
       this.orders = []; // array of objects
 
-      this.startTime = null;
-      this.endTime = null;
+      this.startOrdersTime = null;
+      this.endOrdersTime = null;
 
       delete data.id;
       this.addPipelineResources(data);
@@ -66,41 +68,60 @@ try {
     // @param {array} ordersData
     async addNewOrders(ordersData) {
 
-      var d = new Date();
-      var time = d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds();
-      this.startTime = time; // d.getTime(); ????
+      this.startOrdersTime = new Date();
 
+      // crate order objects
       for (var i = 0; i < ordersData.length; i++) {
 
         this.orders.push(new Order(ordersData[i].id, ordersData[i].toppings));
-        // this.timeout(5);
-        // await setTimeout(function() {
-        //   console.log('here1');
-        // }, 1000 * 10);
+
       }
 
+      // start pipeline asynchronous processes
       await Promise.all(this.orders.map(async (order) => {
 
         await order.startPipelineProcess(this); // asynchronous process
 
-        // await this.timeout(5);
-        // console.log('here2');
-
-        // this.orders.push(new Order(ordersData[i].id)
-        // const contents = await fs.readFile(file, 'utf8')
-        // console.log(contents)
       }));
-      // console.log(this.doughChefs);
+
+      this.endOrdersTime = new Date();
+
     };
 
-    timeout(sec) {
-      return new Promise(resolve => setTimeout(resolve, 1000 * sec));
+    // printing in report log file:
+    // The total preparation time for the whole process of this group of orders, from start to end
+    // The preparation time for each order (from start to end)
+    printFinalReport() {
+
+      console.log('in here2');
+      let startTime = this.getTime(this.startOrdersTime);
+      let endTime = this.getTime(this.endOrdersTime);
+      let totalTime = Math.round((this.endOrdersTime.getTime() - this.startOrdersTime.getTime()) / 1000);
+      let str = "Restaurant ID - (" + this.id + ") | start time: " + startTime + " | end time: " + endTime + " | total time: " + totalTime + " seconds";
+      console.log(str);
+      fs.appendFileSync('./log/report.txt', str + '\n');
+
+      for (var i = 0; i < this.orders.length; i++) {
+
+        let order = this.orders[i];
+        let orderStartTime = this.getTime(order.startTime);
+        let orderEndTime = this.getTime(order.endTime);
+        let orderTotalTime = (order.endTime.getTime() - order.startTime.getTime()) / 1000;
+        let str = "Order ID - (" + order.id + ") | start time: " + orderStartTime + " | end time: " + orderEndTime + " | total time: " + orderTotalTime + " seconds";
+        console.log(str);
+        fs.appendFileSync('./log/report.txt', str + '\n');
+      }
+
     }
 
-    printFinalReport() {
-      //in one log file report
-      // The total preparation time for the whole process of this group of order from start to end (when the last order finished her preparation)
-      //The preparation time for each order (from start to end)
+    getTime(d = new Date()) {
+
+      var hours = d.getHours() < 10 ? '0' + d.getHours() : d.getHours();
+      var minutes = d.getMinutes() < 10 ? '0' + d.getMinutes() : d.getMinutes();
+      var seconds = d.getSeconds() < 10 ? '0' + d.getSeconds() : d.getSeconds();
+
+      return hours + ":" + minutes + ":" + seconds;
+
     }
 
   }
