@@ -8,6 +8,7 @@ module.exports = class Oven extends Pipeline {
   }
 
   async bake() {
+    this.busy = true;
     return await timeout(this.bakeTime);
   }
 

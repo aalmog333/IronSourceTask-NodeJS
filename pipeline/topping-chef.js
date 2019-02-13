@@ -13,6 +13,7 @@ try {
     }
 
     async createTopping() {
+      this.busy = true;
       // activeTopping handle
       return await timeout(this.createToppingTime);
     }

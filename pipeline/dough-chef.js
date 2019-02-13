@@ -10,6 +10,7 @@ try {
 
     async createDough() {
       // add async await with set timeout and maybe put it inside Pipeline;
+      this.busy = true;
       return await timeout(this.createDoughTime);
     }
 

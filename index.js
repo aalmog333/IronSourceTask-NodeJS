@@ -11,20 +11,26 @@ var fs = require('fs');
 
 try {
 
-  // first step - get Restaurant info from db and create Restaurant object;
+  // clear log & report files content
+  fs.writeFileSync('./log/log.txt', '');
+  fs.writeFileSync('./log/report.txt', '');
 
+  // first step - get Restaurant info from db and create Restaurant object;
   // restaurants.json contains array of all restaurants data (for future needs)
   // each restaurant object contains properties of all the pipeline roles. each role contains array of ids
   var restaurantsData = JSON.parse(fs.readFileSync('./DB/restaurants.json', 'utf8'));
-  // orders.json contains array of all orders data, for all the restaurants (for future needs)
-  var ordersData = JSON.parse(fs.readFileSync('./DB/orders.json', 'utf8'));
 
   // create new restaurant object
-  restaurantData = restaurantsData.find(x => x.id === 1);
-  myRestaurant = new restaurant(restaurantData);
+  var restaurantData = restaurantsData.find(x => x.id === 1);
+  var myRestaurant = new restaurant(restaurantData);
+
+  // second step - get orders
+  // orders.json contains array of all orders data, for all the restaurants (for future needs)
+  var ordersData = JSON.parse(fs.readFileSync('./DB/orders.json', 'utf8'));
+  var myRestaurantOrdersData = ordersData.filter(x => x.restaurantId === 1);
 
   // send new orders to myRestaurant
-  myRestaurantOrdersData = ordersData.find(x => x.restaurantId === 1);
+  // start pipeline asynchronous processes
   myRestaurant.addNewOrders(myRestaurantOrdersData);
   myRestaurant.printFinalReport(); // only when all the order finished their preparation pipeline process
 

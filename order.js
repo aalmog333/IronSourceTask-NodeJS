@@ -1,49 +1,73 @@
-const fs = require('fs-extra')
+// const fse = require('fs-extra');
+const fs = require('fs');
 
 module.exports = class Order {
 
   constructor(id) {
     this.id = id;
     this.stage = 0;
-    
+
+    var d = new Date();
+    var time = d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds();
+    this.startTime = time;
+    this.endTime = null;
+
+    this.log(time);
+
   }
 
-  log(stage) {
+  // write to log the current stage of the order
+  log(time = null) {
 
     var stageName = null;
 
-    switch stage {
+    switch (this.stage) {
 
       case 0:
         stageName = "waiting";
-      break;
+        break;
 
       case 1:
         stageName = "dough";
-      break;
+        break;
 
       case 2:
         stageName = "topping";
-      break;
+        break;
 
       case 3:
         stageName = "oven";
-      break;
+        break;
 
       case 4:
         stageName = "serving";
-      break;
+        break;
 
       case 4:
         stageName = "completed";
-      break;
+        break;
 
     }
 
+    let str = "Order ID - (" + this.id + ") - is " + stageName + ( time ? ' | time = ' + time : '');
+    console.log(str);
+    fs.appendFileSync('./log/log.txt', str + '\n');
+    // var ordersData = JSON.parse(fs.readFileSync('./DB/orders.json', 'utf8'));
+    // myRestaurantOrdersData = ordersData.find(x => x.id === this.id);
+    // fs.writeFileSync('./DB/orders.json', 'utf8');
     //TODO: write to log file;
 
   }
 
-};
+  async startPipelineProcess(restaurant) {
 
-Oven.bakeTime = 10;
+    return new Promise((resolve, reject) => {
+
+      let str = "Order ID - (" + this.id + ") - " + "Restaurant ID = " + restaurant.id;
+      console.log(str);
+      fs.appendFileSync('./log/log.txt', str + '\n');
+      resolve();
+    });
+  }
+
+};
