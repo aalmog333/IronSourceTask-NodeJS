@@ -6,16 +6,19 @@ try {
 
     constructor() {
       super();
-      this.activeTopping = 0; // activeTopping <= maxActiveTopping;
-      this.createToppingTime = 4; // 4 sec // can only be static property with ES6
-      this.maxActiveTopping = 2; // s sec
+      // this.activeToppings = 0; // activeTopping <= maxActiveTopping; // we don't need this
+      this.defaultToppingsTime = 4; // 4 sec // can only be static property with ES6
+      // this.maxActiveToppings = 2; // 2 sec // we don't need this
 
     }
 
-    async createTopping() {
+    async createTopping(order) {
+
       this.busy = true;
-      // activeTopping handle
-      return await timeout(this.createToppingTime);
+      let createToppingsTime = Math.ceil(order.toppings/2) * this.defaultToppingsTime;
+      await this.timeout(createToppingsTime);
+      this.busy = false;
+
     }
 
   };

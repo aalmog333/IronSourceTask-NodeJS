@@ -7,9 +7,10 @@ module.exports = class Waiter extends Pipeline {
     this.serveTime = 5; // 5 sec
   }
 
-  async serve() {
+  async serve(order) {
     this.busy = true;
-    return await timeout(this.serveTime);
+    await this.timeout(this.serveTime);
+    this.busy = false;
   }
 
 };

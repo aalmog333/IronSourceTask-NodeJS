@@ -7,9 +7,10 @@ module.exports = class Oven extends Pipeline {
     this.bakeTime = 10; // 10 sec
   }
 
-  async bake() {
+  async bake(order) {
     this.busy = true;
-    return await timeout(this.bakeTime);
+    await this.timeout(this.bakeTime);
+    this.busy = false;
   }
 
 };

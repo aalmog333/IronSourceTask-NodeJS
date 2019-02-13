@@ -8,10 +8,11 @@ try {
       this.createDoughTime = 7; // 7 sec // can only be static property with ES6
     }
 
-    async createDough() {
+    async createDough(order) {
       // add async await with set timeout and maybe put it inside Pipeline;
       this.busy = true;
-      return await timeout(this.createDoughTime);
+      await this.timeout(this.createDoughTime);
+      this.busy = false;
     }
 
   };

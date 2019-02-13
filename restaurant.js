@@ -72,7 +72,7 @@ try {
 
       for (var i = 0; i < ordersData.length; i++) {
 
-        this.orders.push(new Order(ordersData[i].id));
+        this.orders.push(new Order(ordersData[i].id, ordersData[i].toppings));
         // this.timeout(5);
         // await setTimeout(function() {
         //   console.log('here1');
@@ -90,7 +90,7 @@ try {
         // const contents = await fs.readFile(file, 'utf8')
         // console.log(contents)
       }));
-
+      // console.log(this.doughChefs);
     };
 
     timeout(sec) {
