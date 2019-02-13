@@ -93,7 +93,6 @@ try {
     // The preparation time for each order (from start to end)
     printFinalReport() {
 
-      console.log('in here2');
       let startTime = this.getTime(this.startOrdersTime);
       let endTime = this.getTime(this.endOrdersTime);
       let totalTime = Math.round((this.endOrdersTime.getTime() - this.startOrdersTime.getTime()) / 1000);

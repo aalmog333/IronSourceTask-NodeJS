@@ -24,11 +24,6 @@ module.exports = class Order {
     console.log(str);
     fs.appendFileSync('./log/log.txt', str + '\n');
 
-    // to do:  update orders.json when order completed
-    // var ordersData = JSON.parse(fs.readFileSync('./DB/orders.json', 'utf8'));
-    // myRestaurantOrdersData = ordersData.find(x => x.id === this.id);
-    // fs.writeFileSync('./DB/orders.json', 'utf8');
-
   }
 
   async startPipelineProcess(restaurant) {
@@ -47,7 +42,6 @@ module.exports = class Order {
     await this.sendToWaiter(restaurant.waiters);
     this.stage = 9; // completed
 
-    let time = this.getTime();
     this.endTime = new Date();
     this.log(this.endTime);
 
