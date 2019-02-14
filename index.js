@@ -18,7 +18,7 @@ try {
 
   // --> first step - get Restaurant info from db and create Restaurant object;
   // restaurants.json contains array of all restaurants data (for future needs)
-  // each restaurant object contains properties of all the pipeline roles. each role contains array of ids
+  // each restaurant object contains properties of all the pipeline roles. each role value is the number of objects the restaurant has for that role
   var restaurantsData = JSON.parse(fs.readFileSync('./DB/restaurants.json', 'utf8'));
 
   // create new restaurant object
