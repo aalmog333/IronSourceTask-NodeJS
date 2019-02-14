@@ -2,7 +2,7 @@
 
 // *************** Notes ********************
 // you can add or remove orders from the orders.json
-// you can choose to a add new restaurant to restaurants.json and her orders to orders.js but use need to edit the code in here (index.js) in order to deploy the second restaurant too
+// you can choose to a add new restaurant to restaurants.json and her orders to orders.js but you need to edit the code in here (index.js) in order to deploy the second restaurant too
 // missing try/catch in some places, but the code is working (as far as I know...)
 // ******************************************
 
